@@ -15,7 +15,6 @@ const Navbar = () => {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  // Close mobile menu on route change
   useEffect(() => {
     setMenuOpen(false);
   }, [location.pathname]);
@@ -30,12 +29,14 @@ const Navbar = () => {
   };
 
   const navLinks = [
-    { label: "Home",       type: "link",   to: "/" },
-    { label: "Skills",     type: "scroll", id: "skills" },
-    { label: "Projects",   type: "link",   to: "/projects" },
-    { label: "CP",         type: "link",   to: "/competitive" },
-    { label: "About",      type: "link",   to: "/about" },
+    { label: "Home",     type: "link",   to: "/" },
+    { label: "Skills",   type: "scroll", id: "skills" },
+    { label: "Projects", type: "link",   to: "/projects" },
+    { label: "CP",       type: "link",   to: "/competitive" },
+    { label: "About",    type: "link",   to: "/about" },
   ];
+
+  const PDF_PATH = "/resume-java.pdf";
 
   return (
     <>
@@ -65,7 +66,6 @@ const Navbar = () => {
           justify-content: space-between;
         }
 
-        /* Logo */
         .nb-logo {
           font-family: 'Playfair Display', serif;
           font-size: 1.35rem;
@@ -87,7 +87,6 @@ const Navbar = () => {
         }
         .nb-logo:hover::after { width: 100%; }
 
-        /* Desktop links */
         .nb-links {
           display: flex;
           align-items: center;
@@ -126,7 +125,6 @@ const Navbar = () => {
           font-weight: 500;
         }
 
-        /* Resume button */
         .nb-resume {
           font-family: 'DM Mono', monospace;
           font-size: 10.5px;
@@ -139,6 +137,7 @@ const Navbar = () => {
           border: 1px solid rgba(184, 149, 42, 0.45);
           border-radius: 9px;
           background: transparent;
+          cursor: pointer;
           transition: all 0.22s ease;
           position: relative;
           overflow: hidden;
@@ -157,7 +156,6 @@ const Navbar = () => {
         .nb-resume:hover { color: #fff; border-color: #b8952a; }
         .nb-resume span { position: relative; z-index: 1; }
 
-        /* Hamburger */
         .nb-hamburger {
           display: none;
           flex-direction: column;
@@ -181,7 +179,6 @@ const Navbar = () => {
         .nb-hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
         .nb-hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
 
-        /* Mobile drawer */
         .nb-drawer {
           position: fixed;
           top: 66px; left: 0; right: 0;
@@ -197,6 +194,7 @@ const Navbar = () => {
           opacity: 0;
           transition: all 0.32s cubic-bezier(0.4, 0, 0.2, 1);
           pointer-events: none;
+          z-index: 99;
         }
         .nb-drawer.open {
           transform: translateY(0);
@@ -246,6 +244,7 @@ const Navbar = () => {
           text-align: center;
           transition: all 0.2s ease;
           background: transparent;
+          display: block;
         }
         .nb-drawer-resume:hover {
           background: #b8952a;
@@ -261,12 +260,10 @@ const Navbar = () => {
       <header className={`nb-root${scrolled ? " scrolled" : ""}`}>
         <div className="nb-inner">
 
-          {/* Logo */}
           <NavLink to="/" className="nb-logo">
             P<span className="nb-logo-dot">.</span>D
           </NavLink>
 
-          {/* Desktop nav */}
           <ul className="nb-links">
             {navLinks.map((l) =>
               l.type === "link" ? (
@@ -290,12 +287,15 @@ const Navbar = () => {
             )}
           </ul>
 
-          {/* Resume */}
-          <a href="/resume.pdf" target="_blank" rel="noreferrer" className="nb-resume">
-            <span>Resume ↗</span>
+          {/* Resume — plain download link, no modal */}
+          <a
+            href={PDF_PATH}
+            download="resume-java.pdf"
+            className="nb-resume"
+          >
+            <span>Resume ↓</span>
           </a>
 
-          {/* Hamburger */}
           <button
             className={`nb-hamburger${menuOpen ? " open" : ""}`}
             onClick={() => setMenuOpen((v) => !v)}
@@ -332,14 +332,15 @@ const Navbar = () => {
           )
         )}
         <div className="nb-drawer-divider" />
+
+        {/* Mobile drawer resume — also plain download */}
         <a
-          href="/resume.pdf"
-          target="_blank"
-          rel="noreferrer"
+          href={PDF_PATH}
+          download="resume-java.pdf"
           className="nb-drawer-resume"
           onClick={() => setMenuOpen(false)}
         >
-          Resume ↗
+          Resume ↓
         </a>
       </div>
     </>

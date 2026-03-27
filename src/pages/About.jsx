@@ -11,7 +11,12 @@ const ACHIEVEMENTS = [
   {
     metric: "168+",
     label: "LeetCode Problems",
-    detail: "Arrays, trees, graphs, dynamic programming",
+    detail: "Arrays, Strings, Recursion, Bit Manipulation, Sliding Window & Two Pointers, Heaps, stacks & queues",
+  },
+  {
+  metric: "Top 20",
+  label: "VVIT Sushack 2K25",
+  detail: "Ranked among top 20 teams out of 120 in a 24-hour national-level hackathon",
   },
   {
     metric: "Java",

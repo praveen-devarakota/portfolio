@@ -68,6 +68,13 @@ const Homepage = () => {
       icon: Wrench,
       color: "stone",
       skills: ["Git", "VS Code", "IntelliJ IDEA", "Eclipse", "Data Structures", "Algorithms"]
+    },
+    {
+      id: 'GEN AI',
+      title: "GEN AI",
+      icon: Code2,
+      color: "gold",
+      skills: ["LLMs"]
     }
   ];
 
@@ -114,32 +121,61 @@ const Homepage = () => {
     <>
       {/* Home Section */}
       <section
-        id="home"
-        className="min-h-screen flex flex-col md:flex-row items-center justify-center gap-10 px-8 md:px-20"
-        style={{ background: "#f5f2ec" }}
-      >
-        <div
-          className="w-56 h-56 md:w-72 md:h-72 rounded-full overflow-hidden animate-fade-in"
-          style={{ border: "4px solid rgba(184,149,42,0.35)", boxShadow: "0 8px 32px rgba(184,149,42,0.15)" }}
-        >
-          <img src={DP} alt="Praveen" className="w-full h-full object-cover" />
-        </div>
+  id="home"
+  className="min-h-screen flex flex-col md:flex-row items-center justify-center gap-12 px-8 md:px-20"
+  style={{ background: "#f5f2ec" }}
+>
+  {/* Profile Image */}
+  <div
+    className="w-56 h-56 md:w-72 md:h-72 rounded-full overflow-hidden animate-fade-in"
+    style={{
+      border: "4px solid rgba(184,149,42,0.35)",
+      boxShadow: "0 8px 32px rgba(184,149,42,0.15)",
+    }}
+  >
+    <img src={DP} alt="Praveen" className="w-full h-full object-cover" />
+  </div>
 
-        <div className="flex flex-col gap-4 max-w-xl animate-slide-in-right">
-          <h1 className="text-3xl md:text-5xl font-bold" style={{ color: "#1a1812" }}>
-            Hi, I'm Praveen 👋
-          </h1>
-          <p className="text-lg italic" style={{ color: "#7a6a3a" }}>
-            "Balancing life like a movie — action on field, emotions in cinema, and logic in code."
-          </p>
-          <p className="leading-relaxed text-md md:text-lg" style={{ color: "rgba(26,24,18,0.65)" }}>
-            I'm a passionate developer who loves coding, movies from TFI,
-            and playing cricket. I enjoy creating smooth and meaningful digital
-            experiences using modern web technologies. Always learning, growing,
-            and upgrading myself like a true all-rounder!
-          </p>
-        </div>
-      </section>
+  {/* Content */}
+  <div className="flex flex-col gap-5 max-w-xl animate-slide-in-right">
+
+    {/* Title */}
+    <h1 className="text-3xl md:text-5xl font-bold leading-tight" style={{ color: "#1a1812" }}>
+      Hi, I'm <span style={{ color: "#b8952a" }}>Praveen</span>
+    </h1>
+
+    {/* Subtitle */}
+    <h2 className="text-lg md:text-xl font-medium" style={{ color: "#7a6a3a" }}>
+      Java Full Stack Developer  • GEN AI Enthusiast • Problem Solver
+    </h2>
+
+    {/* Description */}
+    <p className="leading-relaxed text-md md:text-lg" style={{ color: "rgba(26,24,18,0.65)" }}>
+      I'm a B.Tech IT student passionate about building scalable and user-focused web applications.
+      I specialize in Java, Spring Boot, and modern frontend technologies like React. 
+      With a strong foundation in Data Structures and Algorithms, I enjoy solving complex problems 
+      and turning ideas into real-world solutions.
+    </p>
+
+    {/* Highlights */}
+    <div className="flex flex-wrap gap-3 mt-2">
+      {["Java", "Spring Boot", "React", "DSA", "Full Stack", "GEN AI"].map((skill) => (
+        <span
+          key={skill}
+          className="px-3 py-1 text-sm rounded-md"
+          style={{
+            background: "rgba(184,149,42,0.08)",
+            border: "1px solid rgba(184,149,42,0.25)",
+            color: "#8a6e1a",
+          }}
+        >
+          {skill}
+        </span>
+      ))}
+    </div>
+
+  </div>
+</section>
 
       {/* Skills Section */}
       <section
