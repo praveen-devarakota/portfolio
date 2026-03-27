@@ -3,10 +3,10 @@ import { useState, useEffect, useRef } from "react";
 const LEETCODE_USERNAME = "praveen2006";
 
 const STATS = {
-  totalSolved: 150,
-  easySolved: 62,
-  mediumSolved: 79,
-  hardSolved: 9,
+  totalSolved: 168,
+  easySolved: 68,
+  mediumSolved: 90,
+  hardSolved: 10,
   ranking: "—",
   acceptanceRate: "—",
   lastUpdated: "September 2025",
