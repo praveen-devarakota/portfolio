@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Code2, Monitor, Database, Server, Wrench } from 'lucide-react';
-import DP from "../assets/Dp.webp";
+import DP from "../assets/DP.webp";
 import { useLocation } from "react-router-dom";
 
 
